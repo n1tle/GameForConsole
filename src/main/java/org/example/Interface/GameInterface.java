@@ -3,7 +3,10 @@ package org.example.Interface;
 import org.example.Cubes.Cube;
 import org.example.Players.RealPlayer;
 
+
+import java.util.InputMismatchException;
 import java.util.Scanner;
+
 
 public class GameInterface {
 
@@ -15,32 +18,59 @@ public class GameInterface {
         System.out.println("1 - Enter name");
         System.out.println("2 - Generate random name");
 
+        checkChoiceName(getChoiceName());
 
-        RealPlayer.playerName = getScannerData("Enter the player's name or generated random name");
+ //       RealPlayer.playerName = getScannerData("Enter the player's name or generated random name");
 
         cubeGame = new Cube();
         showTurn();
     }
 
-    private static void showTurn() {
-        cubeGame.getCubeDots();
-        System.out.println("Your cubes:");
-        generateCubes(cubeGame.getFirstCubeDots());
-        generateCubes(cubeGame.getSecondCubeDots());
-        getPlayerChoice();
+    private static int getChoiceName() {
+        var choice = 0;
+        try {
+            Scanner sc = new Scanner(System.in);
+            choice = sc.nextInt();
+        } catch (InputMismatchException e) {
+            System.out.println("Incorrect menu entry type. Try again.");
+            getChoiceName();
+        }
+        return choice;
     }
 
-    private static void getPlayerChoice() {
-        String answer = getScannerData("Сумма кубиков с компьютером больше 15? да/нет");
-        if (answer.equals("да")) {
-            checkTurnResult(true);
-        } else if (answer.equals("нет")) {
-            checkTurnResult(false);
-        } else {
-            System.out.println("Неккоректный ответ. попробуйте ещё раз.");
-            getPlayerChoice();
+    private static void checkChoiceName(int choiceName) {
+        switch (choiceName) {
+            case 1 -> {
+                Scanner sc = new Scanner(System.in);
+                RealPlayer.setPlayerName(sc.nextLine());
+            }
+            case 2 -> RealPlayer.getRandomName();
+            default -> {
+                System.out.println("An incorrect selection was entered. Please, try again");
+                startGame();
+            }
         }
     }
+
+    private static void showTurn() {
+        System.out.println(RealPlayer.getPlayerName() + " your cubes:");
+        cubeGame.getCubeDots();
+        generateCubes(cubeGame.getFirstCubeDots());
+        generateCubes(cubeGame.getSecondCubeDots());
+      //  getPlayerChoice();
+    }
+
+//    private static void getPlayerChoice() {
+//        String answer = getScannerData("Сумма кубиков с компьютером больше 15? да/нет");
+//        if (answer.equals("да")) {
+//            checkTurnResult(true);
+//        } else if (answer.equals("нет")) {
+//            checkTurnResult(false);
+//        } else {
+//            System.out.println("Неккоректный ответ. попробуйте ещё раз.");
+//            getPlayerChoice();
+//        }
+//    }
 
     private static void checkTurnResult(boolean choice) {
     }
@@ -90,8 +120,8 @@ public class GameInterface {
         System.out.println("●");
     }
 
-    private static String getScannerData(String message) {
-        System.out.println(message);
-        return new Scanner(System.in).nextLine();
-    }
+//        private static String getScannerData(String message) {
+//        System.out.println(message);
+//        return new Scanner(System.in).nextLine();
+//    }
 }
