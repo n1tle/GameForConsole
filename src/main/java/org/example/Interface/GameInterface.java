@@ -20,7 +20,7 @@ public class GameInterface {
 
         checkChoiceName(getChoiceName());
 
- //       RealPlayer.playerName = getScannerData("Enter the player's name or generated random name");
+
 
         cubeGame = new Cube();
         showTurn();
@@ -53,27 +53,15 @@ public class GameInterface {
     }
 
     private static void showTurn() {
-        System.out.println(RealPlayer.getPlayerName() + " your cubes:");
+        System.out.println(RealPlayer.getPlayerName()+ "," + " your cubes:");
         cubeGame.getCubeDots();
         generateCubes(cubeGame.getFirstCubeDots());
         generateCubes(cubeGame.getSecondCubeDots());
-      //  getPlayerChoice();
+
+        System.out.println("You have a minute to give an answer. Time has passed");
+        ResponseTime.responseTimer.schedule(ResponseTime.task1, 4000);
     }
 
-//    private static void getPlayerChoice() {
-//        String answer = getScannerData("Сумма кубиков с компьютером больше 15? да/нет");
-//        if (answer.equals("да")) {
-//            checkTurnResult(true);
-//        } else if (answer.equals("нет")) {
-//            checkTurnResult(false);
-//        } else {
-//            System.out.println("Неккоректный ответ. попробуйте ещё раз.");
-//            getPlayerChoice();
-//        }
-//    }
-
-    private static void checkTurnResult(boolean choice) {
-    }
 
     private static void generateCubes(int cubeDots) {
         switch (cubeDots) {
@@ -120,8 +108,4 @@ public class GameInterface {
         System.out.println("●");
     }
 
-//        private static String getScannerData(String message) {
-//        System.out.println(message);
-//        return new Scanner(System.in).nextLine();
-//    }
 }

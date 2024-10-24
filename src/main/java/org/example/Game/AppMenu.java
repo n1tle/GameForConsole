@@ -41,13 +41,13 @@ private static void readRules() {
 
 private static void openMenu(int stepBack) {
   switch (stepBack) {
-     case 1 -> {
-         start();
+     case 1 -> start();
+     case 2 -> {
+         System.out.println("Error. Game over.");
+         System.exit(0);
      }
-       default -> {
-            System.out.println("Please choise number 1");
-       }
-    }
+
+  }
 }
 
 
