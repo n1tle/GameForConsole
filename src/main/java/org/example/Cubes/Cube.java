@@ -3,8 +3,12 @@ package org.example.Cubes;
 public class Cube {
     private int firstCubeDots;
     private int secondCubeDots;
+    private int threeCubeDots;
+    private int fourCubeDots;
+    private int fiveCubeDots;
 
     public int getFirstCubeDots() {
+
         return firstCubeDots;
     }
 
@@ -12,13 +16,26 @@ public class Cube {
         return secondCubeDots;
     }
 
+    public int getThreeCubeDots() {
+        return threeCubeDots;
+    }
+
+    public int getFourCubeDots() {
+        return fourCubeDots;
+    }
+
+    public int getFiveCubeDots() {
+        return fiveCubeDots;
+    }
+
     public static int getTurnCounter() {
+
         return turnCounter;
     }
 
     private static int turnCounter = 1;
 
-    private int generateNumberOfDots() {
+    public static int generateNumberOfDots() {
         int min = 1;
         int max = 6;
         max -= min;
@@ -33,6 +50,10 @@ public class Cube {
         else {
             firstCubeDots = generateNumberOfDots();
             secondCubeDots = generateNumberOfDots();
+            threeCubeDots = generateNumberOfDots();
+            fourCubeDots = generateNumberOfDots();
+            fiveCubeDots = generateNumberOfDots();
+
             turnCounter++;
         }
 
@@ -40,4 +61,6 @@ public class Cube {
 
     private static void showResult() {
     }
+
+
 }

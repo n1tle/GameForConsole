@@ -1,6 +1,7 @@
 package org.example.Interface;
 
 import org.example.Cubes.Cube;
+import org.example.Cubes.FirstMove;
 import org.example.Players.RealPlayer;
 
 
@@ -20,11 +21,26 @@ public class GameInterface {
 
         checkChoiceName(getChoiceName());
 
-
-
         cubeGame = new Cube();
-        showTurn();
+        //showTurn();
+
+        FirstMove.getRandomMove();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     private static int getChoiceName() {
         var choice = 0;
@@ -57,9 +73,12 @@ public class GameInterface {
         cubeGame.getCubeDots();
         generateCubes(cubeGame.getFirstCubeDots());
         generateCubes(cubeGame.getSecondCubeDots());
+        generateCubes(cubeGame.getThreeCubeDots());
+        generateCubes(cubeGame.getFourCubeDots());
+        generateCubes(cubeGame.getFiveCubeDots());
 
         System.out.println("You have a minute to give an answer. Time has passed");
-        ResponseTime.responseTimer.schedule(ResponseTime.task1, 4000);
+        ResponseTime.responseTimer.schedule(ResponseTime.task1, 60000);
     }
 
 
@@ -74,36 +93,36 @@ public class GameInterface {
         }
     }
 
-    private static void generateSixDots() {
+    public static void generateSixDots() {
         System.out.println("Cube:");
         System.out.println("● ● ●");
         System.out.println("● ● ●");
     }
 
-    private static void generateFiveDots() {
+    public static void generateFiveDots() {
         System.out.println("Cube:");
         System.out.println("● ●");
         System.out.println(" ●");
         System.out.println("● ●");
     }
 
-    private static void generateFourDots() {
+    public static void generateFourDots() {
         System.out.println("Cube:");
         System.out.println("● ●");
         System.out.println("● ●");
     }
 
-    private static void generateThreeDots() {
+    public static void generateThreeDots() {
         System.out.println("Cube:");
         System.out.println("● ● ●");
     }
 
-    private static void generateTwoDots() {
+    public static void generateTwoDots() {
         System.out.println("Cube:");
         System.out.println("● ●");
     }
 
-    private static void generateOneDot() {
+    public static void generateOneDot() {
         System.out.println("Cube:");
         System.out.println("●");
     }
