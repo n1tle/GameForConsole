@@ -1,7 +1,5 @@
 package org.example.Players;
 
-import org.example.Interface.GameInterface;
-
 import java.util.Random;
 
 public class Bot1 {
@@ -10,10 +8,11 @@ public class Bot1 {
     public static int b1Index = (int) (Math.random() * 7);
 
 
-    public static void RandomBotName() {
+    public static String RandomBotName() {
         Random random = new Random();
-int index = random.nextInt(name.length);
-botName = name[index];
+        int index = random.nextInt(name.length);
+        botName = name[index];
+        return botName;
     }
 
 

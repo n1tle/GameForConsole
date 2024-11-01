@@ -13,12 +13,12 @@ public class ResponseTime {
             }
         };
 
-//        TimerTask task2 = new TimerTask() {
-//            @Override
-//            public void run() {
-//                System.out.println("You have a minute to give an answer");
-//            }
-//        };
+        static TimerTask task2 = new TimerTask() {
+            @Override
+            public void run() {
+                System.out.println("The draw is underway");
+            }
+        };
 
-    }
+}
 

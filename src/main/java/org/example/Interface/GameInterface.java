@@ -8,6 +8,7 @@ import org.example.Players.RealPlayer;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
+import java.util.TimerTask;
 
 
 public class GameInterface {
@@ -26,19 +27,30 @@ public class GameInterface {
         //showTurn();
 
         FirstMove.getRandomMove();
-        ComparisonMove();
+
+        ResponseTime.responseTimer.schedule(ResponseTime.task2, 7000);
+
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        ComparisonMove();
+                    }
+                },
+                3000
+        );
 
     }
 
 public static void ComparisonMove() {
-    System.out.println("The drawing begins");
         int index = FirstMove.index;
         int b1Index = Bot1.b1Index;
         if (index > b1Index) {
+            System.out.println("Cube dots " + Bot1.RandomBotName() + " " + b1Index);
             System.out.println("You start first");
-            System.out.println(index + b1Index);
         } else if (index < b1Index) {
-            System.out.println(Bot1.getBotName() + "goes first");
+            System.out.println("Dots your cube < dots" + Bot1.RandomBotName() );
+            System.out.println(Bot1.RandomBotName() + " goes first");
 
         }
 }
