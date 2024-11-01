@@ -2,6 +2,7 @@ package org.example.Interface;
 
 import org.example.Cubes.Cube;
 import org.example.Cubes.FirstMove;
+import org.example.Players.Bot1;
 import org.example.Players.RealPlayer;
 
 
@@ -25,9 +26,22 @@ public class GameInterface {
         //showTurn();
 
         FirstMove.getRandomMove();
+        ComparisonMove();
+
     }
 
+public static void ComparisonMove() {
+    System.out.println("The drawing begins");
+        int index = FirstMove.index;
+        int b1Index = Bot1.b1Index;
+        if (index > b1Index) {
+            System.out.println("You start first");
+            System.out.println(index + b1Index);
+        } else if (index < b1Index) {
+            System.out.println(Bot1.getBotName() + "goes first");
 
+        }
+}
 
 
 
