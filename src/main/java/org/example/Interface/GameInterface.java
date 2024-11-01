@@ -24,11 +24,11 @@ public class GameInterface {
         checkChoiceName(getChoiceName());
 
         cubeGame = new Cube();
-        //showTurn();
+
 
         FirstMove.getRandomMove();
 
-        ResponseTime.responseTimer.schedule(ResponseTime.task2, 7000);
+        ResponseTime.responseTimer.schedule(ResponseTime.task2, 3000);
 
         new java.util.Timer().schedule(
                 new java.util.TimerTask() {
@@ -37,7 +37,16 @@ public class GameInterface {
                         ComparisonMove();
                     }
                 },
-                3000
+                7000
+        );
+
+        new java.util.Timer().schedule(
+                new java.util.TimerTask() {
+                    @Override
+                    public void run() {
+                        showTurn();
+                    }
+                }, 10000
         );
 
     }
